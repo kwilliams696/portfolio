@@ -132,3 +132,10 @@ body, .background-img {
         transform: translateX(-50%) translateY(-5px);
     }
 }
+
+@media (max-width: 30.0613em) {
+    .content {
+        padding-top: 8.125rem;
+        padding-bottom: 1.25rem;
+    }
+}
