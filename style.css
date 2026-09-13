@@ -292,33 +292,36 @@
                  0 0 20px #3aaff3, 0 0 40px #43a3f6, 0 0 60px #49ccfb, 
                  0 0 80px #1896f7, 0 0 130px #4abdf6;
 }
+/* =========================================
+   MOBILE RESPONSIVE DESIGN
+   ========================================= */
 
-/* =========================
-   MOBILE VERSION
-   ========================= */
+@media screen and (max-width: 768px) {
 
-@media (max-width: 768px) {
-
-    /* Общие настройки */
     * {
         box-sizing: border-box;
     }
 
-    html,
+    html {
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
     body {
         width: 100%;
-        max-width: 100%;
+        margin: 0;
         overflow-x: hidden;
     }
 
-    body {
-        margin: 0;
-    }
+    /* BACKGROUND VIDEO */
 
-    /* Фоновое видео */
     .background-video {
+        position: fixed;
+        inset: 0;
         width: 100%;
         height: 100dvh;
+        overflow: hidden;
     }
 
     .background-video video {
@@ -327,213 +330,414 @@
         object-fit: cover;
     }
 
-    /* Главный экран */
-    .content {
-        min-height: 100dvh;
+
+    /* FIRST SCREEN */
+
+    #portfolio-section {
         width: 100%;
+        min-height: 100dvh;
         padding: 20px;
+        text-align: center;
     }
 
     .neon-text {
-        min-height: auto;
+        min-height: 100dvh;
         width: 100%;
-        padding: 20px 10px;
+        padding: 20px;
+
+        font-size: clamp(16px, 5vw, 25px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         text-align: center;
-        font-size: clamp(20px, 7vw, 30px);
     }
 
-    /* Стрелка */
+    .neon-text h1 {
+        max-width: 100%;
+        margin: 0 0 15px 0;
+        font-size: clamp(25px, 8vw, 40px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .neon-text p {
+        font-size: clamp(14px, 4.5vw, 20px);
+        margin: 10px 0 30px;
+    }
+
+
+    /* ARROW */
+
     .scroll-arrow img {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
     }
 
-    /* Следующая секция */
+
+    /* MENU */
+
     #next-section {
         width: 100%;
         min-height: 100dvh;
-        height: auto;
+        height: auto !important;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         padding: 40px 20px;
     }
 
-    /* Кнопки */
     .button-container {
         width: 100%;
         gap: 18px;
-        margin-top: 20px;
+        margin: 0;
     }
 
     .center-button {
-        width: 85%;
-        max-width: 320px;
-        padding: 18px 20px;
+        width: min(85%, 320px);
+
+        padding: 17px 15px;
+
         font-size: 16px;
+
+        text-align: center;
+        display: block;
     }
 
     .center-button:hover {
         transform: none;
     }
 
-    /* ABOUT ME */
+
+    /* SPACE BETWEEN SECTIONS */
+
+    .section-space {
+        height: 15vh;
+    }
+
+
+    /* ALL BIG PANELS */
+
     #about-me,
     .polotno,
     .rozovoe-polotno {
+
         width: calc(100% - 30px);
-        max-width: 100%;
+
         height: auto;
         min-height: auto;
-        margin: 20px auto;
-        padding: 30px 20px;
+
+        margin: 0 auto;
+
+        padding: 35px 20px;
+
         border-radius: 15px;
+
+        position: relative;
     }
 
-    /* Контент внутри блока */
+
+    /* CONTENT */
+
     .content-overlay {
+
         position: relative;
+
         top: auto;
         left: auto;
+
         transform: none;
 
         width: 100%;
-        padding: 10px;
 
-        font-size: 18px;
-    }
+        padding: 0;
 
-    /* Текст + фотография */
-    .text-and-image {
+        font-size: 16px;
+
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+
+    /* HEADINGS */
+
+    .content-overlay h2 {
+
         width: 100%;
+
+        margin: 0 0 25px;
+
+        text-align: center;
+
+        font-size: clamp(22px, 7vw, 30px);
+
+        line-height: 1.2;
+    }
+
+
+    /* TEXT + IMAGE */
+
+    .text-and-image {
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
         gap: 25px;
     }
 
+
+    /* TEXT */
+
     .text-content {
+
+        width: 100%;
+
         display: flex;
         flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
+
+        align-items: center;
+
+        margin: 0;
+
         text-align: center;
     }
+
+    .text-content p {
+
+        width: 100%;
+
+        margin: 0 0 18px;
+
+        font-family: 'terminator', sans-serif;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        text-align: center;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    /* LEFT / RIGHT */
 
     .left,
     .right {
+
         width: 100%;
+
         flex: none;
+
+        margin: 0;
+
         text-align: center;
-        margin-right: 0;
     }
 
-    /* Вертикальная линия */
+    .left p,
+    .right p {
+
+        text-align: center;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    /* SEPARATOR */
+
     .separator {
-        width: 80%;
+
+        width: 70%;
+
         height: 3px;
-        margin: 20px auto;
+
+        margin: 15px auto;
+
         align-self: center;
     }
 
-    /* Текст */
-    .text-content p {
-        font-size: 17px;
-        line-height: 1.5;
-        margin-bottom: 15px;
-    }
 
-    .content-overlay h2 {
-        font-size: 24px;
-        text-align: center;
-    }
+    /* PHOTO */
 
-    .content-overlay p {
-        font-size: 17px;
-        line-height: 1.5;
-    }
-
-    /* Фото */
     .image-photo {
-        display: flex;
-        justify-content: center;
+
         width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
     }
 
     .image-photo img {
-        width: 160px;
-        max-width: 70%;
+
+        width: min(55vw, 180px);
+
         height: auto;
+
         margin: 0;
+
         border-radius: 10%;
     }
 
-    /* CONTACT */
-    .contact-polotno {
+
+    /* SKILLS */
+
+    #skills-s .text-content {
+
         width: 100%;
-        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    #skills-s .left,
+    #skills-s .right {
+
+        width: 100%;
+    }
+
+
+    /* CONTACT */
+
+    #contact-me {
+
+        width: 100%;
+
+        padding: 20px 0;
     }
 
     .contact-me-polotno {
+
         width: 85%;
-        height: 70px;
-        margin: 20px auto;
+
+        height: auto;
+
+        min-height: 75px;
+
+        margin: 0 auto;
+
+        padding: 15px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 10px;
+
+        border-radius: 15px;
     }
 
-    .contact-me-polotno p {
-        font-size: 0.9em;
-        text-align: center;
-    }
 
-    /* Иконки */
+    /* SOCIAL ICONS */
+
     .neon-icon {
-        margin: 10px;
+
+        margin: 5px 10px;
+
+        display: inline-flex;
+
+        justify-content: center;
+
+        align-items: center;
     }
 
     .neon-icon img {
-        width: 42px;
-        height: 42px;
+
+        width: 40px;
+
+        height: 40px;
     }
 
-    /* Убираем hover эффекты на телефоне */
-    .neon-button:hover,
-    .neon-button-cont:hover {
-        transform: none;
+
+    /* CONTACT TEXT */
+
+    .contact-me-polotno p {
+
+        width: 100%;
+
+        margin: 0;
+
+        text-align: center;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    /* MOBILE NEON */
+
+    .neon-text,
+    .center-button,
+    .neon-button,
+    .contact-me-polotno {
+
+        /* немного уменьшаем свечение,
+           чтобы телефон не тормозил */
+
+        text-shadow:
+            0 0 5px #e99bc9,
+            0 0 10px #ff6ac1,
+            0 0 20px #ff6ac1;
     }
 }
 
 
-/* =========================
-   VERY SMALL PHONES
-   ========================= */
+/* =========================================
+   SMALL PHONES
+   ========================================= */
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
 
-    .neon-text {
-        font-size: 19px;
-        padding: 15px 5px;
+    .neon-text h1 {
+        font-size: 25px;
+    }
+
+    .neon-text p {
+        font-size: 14px;
     }
 
     .center-button {
         width: 90%;
-        padding: 16px;
-        font-size: 15px;
+        padding: 15px 10px;
+        font-size: 14px;
     }
 
     #about-me,
     .polotno,
     .rozovoe-polotno {
         width: calc(100% - 20px);
-        padding: 25px 15px;
-    }
-
-    .content-overlay {
-        padding: 5px;
+        padding: 30px 15px;
     }
 
     .content-overlay h2 {
-        font-size: 21px;
+        font-size: 22px;
     }
 
     .text-content p,
-    .content-overlay p {
-        font-size: 15px;
+    .left p,
+    .right p {
+        font-size: 14px;
     }
 
     .image-photo img {
@@ -541,7 +745,11 @@
     }
 
     .neon-icon img {
-        width: 38px;
-        height: 38px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact-me-polotno {
+        width: 90%;
     }
 }
