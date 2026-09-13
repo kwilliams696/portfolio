@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="doc.css">
+</head>
+<body>
+    <div class="background-img">
+        <!-- Section for MV Project Description -->
+        <div class="neon-text-blue">
+            <h2>•Automated Book Advertisement Posting</h2>
+            <p>My task assigned by my boss was to automate the posting of advertisements for specific books.</p>
+            <p>
+                Technology Stack:<br/><br/>
+                <strong>•	Python</strong> <br/>
+                <strong>•	Selenium</strong> <br/>
+                <strong>•	XML</strong> <br/>
+                <strong>•	Requests</strong><br/>
+                <strong>•	WebDriver Manager for Chrome</strong><br/>
+                <strong>•	ChromeDriver</strong><br/>
+            </p>
+            <h3><strong>Description</strong></h3>
+            <p>This script automates the process of posting book advertisements on a website. It reads book details from an XML file and posts them as advertisements. Below are the main steps and code snippets illustrating the key functionalities of the script.</p>
+            <h3>1. Import Libraries and Configure WebDriver</h3>
+            <p>First, the required libraries are imported, and the Selenium WebDriver is configured to use Chrome with custom user data and user agent settings.</p>
+        
+                <div class="neon-text">
+                    <div class="code-block">
+                            <pre><code>
+    import os
+    import time
+    from selenium import webdriver
+    from selenium.webdriver import Keys
+    from selenium.webdriver.common.by import By
+    import xml.etree.ElementTree as ET
+    from selenium.webdriver.support.ui import WebDriverWait
+    import requests
+    import datetime
+    from selenium.webdriver.chrome.service import Service
+    from webdriver_manager.chrome import ChromeDriverManager
+    from selenium.webdriver.chrome.options import Options
+                        
+    xml_file_path = "/your/path.xml"
+
+    login = 'your login'
+    password1 = 'your 1 part of password'
+    password2 = 'your 2 part of password'
+
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+    chrome_options = Options()
+    chrome_options.add_argument("--user-data-dir=/your/path/User Data/")
+    chrome_options.add_argument(f"user-agent={user_agent}")
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+                        </code></pre>
+                    </div>
+                </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>2. Parse XML and Navigate to Base URL</h3>
+            <p>The XML file containing book details is parsed, and the script navigates to the base URL of the advertisement website.</p>
+        
+            <div class="neon-text">
+                <div class="code-block">
+                    <pre><code>
+    tree = ET.parse(xml_file_path)
+    root = tree.getroot()
+    base_url = "https://www.inzercia.sk/"
+
+    product_elements = root.findall('.//Products/Product')
+
+    driver.get(base_url)
+    print(1)
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>3. Login to the Website</h3>
+            <p>The script automates the login process by finding the necessary elements and sending the login credentials.</p>
+        
+            <div class="neon-text">
+                <div class="code-block">
+                    <pre><code>
+    prihlasenie = driver.find_element(By.XPATH, '//*[@id="__next"]/header/nav/ul/li[2]/button')
+    prihlasenie.click()
+    print("Login button clicked")
+    time.sleep(3)
+
+    password0 = driver.find_element(By.XPATH, '//input[@id="password"]')
+    password0.send_keys(password1)
+    time.sleep(3)
+    print(4)
+
+    password = driver.find_element(By.XPATH, '//input[@id="password"]')
+    password.send_keys(password2)
+    time.sleep(3)
+    print(4)
+
+    email = driver.find_element(By.XPATH, '//input[@id="email"]')
+    email.send_keys('usedbooks@olejar.no')
+    time.sleep(3)
+    print(3)
+
+    email.send_keys(Keys.END)
+    email.send_keys(Keys.BACKSPACE)
+    email.send_keys(Keys.BACKSPACE)
+    email.send_keys("eu")
+    time.sleep(3)
+    print(3)
+
+    button_prihlasit = driver.find_element(By.XPATH, '//*[@id="Modal"]/div/div[2]/form/div[3]/button')
+    button_prihlasit.click()
+    time.sleep(3)
+    print(5)    
+                </code></pre>
+            </div>
+        </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>4. Post Advertisements for Each Book</h3>
+            <p>The script iterates over each book in the XML file and automates the posting process, including filling out the advertisement form, uploading images, and submitting the form.</p>
+            <h3>Add Advertisement</h3>
+            <div class="neon-text">
+                <div class="code-block">
+                    <pre><code>
+    for i, product in enumerate(product_elements[74:76]):
+        image_ = product.find('Image0').text
+        print(image_)
+        name = product.find('Name').text
+        annotation = product.find('Description').text
+        rok_vydania = product.find('Year').text
+        pocet_stran = product.find('Pages').text
+        isbn = product.find('ISBN').text
+        ean = product.find('EAN').text
+        cena = product.find('PriceEur').text
+        size = product.find('Size').text
+        id = product.find('Id').text
+
+    wait = WebDriverWait(driver, 10)
+    pridat_inzerat = driver.find_element(By.CLASS_NAME, 'btn-primary')
+    driver.execute_script("arguments[0].click();", pridat_inzerat)
+    time.sleep(1)
+    print(6)
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="neon-text-blue">
+              <h3>Select Category and Subcategory</h3>
+            <div class="neon-text">
+                <div class="code-block">
+                    <pre><code>
+    wait = WebDriverWait(driver, 10)
+    kategoria = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[1]/div/div/div/div/button[3]')
+    kategoria.click()
+    time.sleep(1)
+    print(7)
+
+    podkategoria = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[1]/div/div/div/div/ul/li[5]')
+    podkategoria.click()
+    time.sleep(1)
+
+    beletria = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[1]/div/div/div/div/ul/li[1]')
+    beletria.click()
+    time.sleep(1)
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>Enter Location</h3>
+          <div class="neon-text">
+              <div class="code-block">
+                  <pre><code>
+    lokalita = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[3]/div/div/div/div/div[4]/div[2]/div[1]/div/div/div/input[1]')
+    lokalita.send_keys('81107')
+
+    lokalita_podtvrdenie = driver.find_element(By.XPATH, '//*[@id="location-item-0"]')
+    lokalita_podtvrdenie.click()
+    time.sleep(1)
+                  </code></pre>
+              </div>
+          </div>
+        </div>
+        <div class="neon-text-blue">
+        <h3>Hide Phone Number</h3>
+      <div class="neon-text">
+          <div class="code-block">
+              <pre><code>
+    nezob_tel_cislo = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[5]/div/div/div/div/div[3]/div[2]/label/span[1]')
+    nezob_tel_cislo.click()
+              </code></pre>
+          </div>
+      </div>
+        </div>
+        <div class="neon-text-blue">
+    <h3>Add Title and Description</h3>
+  <div class="neon-text">
+      <div class="code-block">
+          <pre><code>
+    nazov = driver.find_element(By.XPATH, '//*[@id="title"]')
+    nazov.send_keys(name)
+    time.sleep(1)
+
+    if annotation is None:
+        annotation = ""
+
+    if isbn is None:
+        isbn = ""
+
+    if ean is None:
+        ean = ""
+
+    popis = driver.find_element(By.XPATH, '//*[@id="description"]')
+    popis_text = 'Použita kniha je v dobrom stave.'
+
+    if ean or isbn:
+        popis_text += Keys.ENTER + Keys.ENTER + annotation
+        if ean:
+            popis_text += Keys.ENTER + Keys.ENTER + 'EAN: ' + str(ean)
+        if isbn:
+            popis_text += Keys.ENTER + Keys.ENTER + 'ISBN: ' + str(isbn)
+
+    popis_text += Keys.ENTER + Keys.ENTER + 'Väzba: Mäkká bez prebalu'
+    popis_text += Keys.ENTER + Keys.ENTER + 'Rok vydania: ' + str(rok_vydania)
+    popis_text += Keys.ENTER + Keys.ENTER + 'Počet strán: ' + str(pocet_stran)
+    popis_text += Keys.ENTER + Keys.ENTER + 'Rozmery: ' + str(size)
+    popis_text += Keys.ENTER + Keys.ENTER + 'ID: ' + str(id)
+
+    popis.send_keys(popis_text)
+    time.sleep(1)
+
+          </code></pre>
+      </div>
+  </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>Enter Price</h3>
+          <div class="neon-text">
+              <div class="code-block">
+                  <pre><code>
+    cena_ = driver.find_element(By.XPATH, '//*[@id="price"]')
+    cena_.send_keys(cena)
+    time.sleep(1)
+                  </code></pre>
+              </div>
+          </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>Upload Image and Submit</h3>
+          <div class="neon-text">
+              <div class="code-block">
+                  <pre><code>
+    files = 'your/path/to/image-folder'
+
+    response = requests.get(image_)
+    image_content = response.content
+    file_name = "image.jpg"
+    file_path = os.path.join(files, file_name)
+    with open(file_path, "wb") as file:
+        file.write(image_content)
+
+    target_element = driver.find_element(By.XPATH, '//*[@id="__next"]/main/section[2]/div/div/div[2]/div[2]/input')
+    target_element.send_keys(file_path)
+    time.sleep(0.5)
+
+    button_pridat = driver.find_element(By.XPATH, '//*[@id="__next"]/main/div[2]/div/div[2]/button')
+    button_pridat.click()
+    time.sleep(2)
+
+    link_element = driver.find_element(By.XPATH, "/html/head/link[9]")
+    link_ = link_element.get_attribute("href")
+
+    print("adresa:", link_)
+
+    files_inz = 'your/path/to/folder'    
+    file_name = "your/file.txt"     
+    file_path = os.path.join(files_inz, file_name)
+    with open(file_path, "a") as file:
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+        line_to_write = f"{link_} {current_date}\n"
+        file.write(line_to_write)
+
+    file.close()
+
+                  </code></pre>
+              </div>
+          </div>
+        </div>
+        <div class="neon-text-blue">
+            <h3>Close the Browser</h3>
+            <p>After all advertisements are posted, the script closes the browser.</p>
+          <div class="neon-text">
+              <div class="code-block">
+                  <pre><code>
+    driver.quit()
+                  </code></pre>
+              </div>
+          </div>
+        </div>
+        <div id="me" style="height: 20vh;"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
