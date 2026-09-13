@@ -118,9 +118,255 @@ code {
     color: #fafbfd; /* Цвет текста кода */
     font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; /* Шрифт для кода */
 }
-@media (max-width: 30.0613em) {
+/* =========================
+   MOBILE VERSION
+   ========================= */
+
+@media (max-width: 768px) {
+
+    /* Общие настройки */
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    /* Фоновое видео */
+    .background-video {
+        width: 100%;
+        height: 100dvh;
+    }
+
+    .background-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Главный экран */
     .content {
-        padding-top: 8.125rem;
-        padding-bottom: 1.25rem;
+        min-height: 100dvh;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .neon-text {
+        min-height: auto;
+        width: 100%;
+        padding: 20px 10px;
+        text-align: center;
+        font-size: clamp(20px, 7vw, 30px);
+    }
+
+    /* Стрелка */
+    .scroll-arrow img {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* Следующая секция */
+    #next-section {
+        width: 100%;
+        min-height: 100dvh;
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    /* Кнопки */
+    .button-container {
+        width: 100%;
+        gap: 18px;
+        margin-top: 20px;
+    }
+
+    .center-button {
+        width: 85%;
+        max-width: 320px;
+        padding: 18px 20px;
+        font-size: 16px;
+    }
+
+    .center-button:hover {
+        transform: none;
+    }
+
+    /* ABOUT ME */
+    #about-me,
+    .polotno,
+    .rozovoe-polotno {
+        width: calc(100% - 30px);
+        max-width: 100%;
+        height: auto;
+        min-height: auto;
+        margin: 20px auto;
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    /* Контент внутри блока */
+    .content-overlay {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+
+        width: 100%;
+        padding: 10px;
+
+        font-size: 18px;
+    }
+
+    /* Текст + фотография */
+    .text-and-image {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 25px;
+    }
+
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        flex: none;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    /* Вертикальная линия */
+    .separator {
+        width: 80%;
+        height: 3px;
+        margin: 20px auto;
+        align-self: center;
+    }
+
+    /* Текст */
+    .text-content p {
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .content-overlay h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .content-overlay p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    /* Фото */
+    .image-photo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .image-photo img {
+        width: 160px;
+        max-width: 70%;
+        height: auto;
+        margin: 0;
+        border-radius: 10%;
+    }
+
+    /* CONTACT */
+    .contact-polotno {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .contact-me-polotno {
+        width: 85%;
+        height: 70px;
+        margin: 20px auto;
+    }
+
+    .contact-me-polotno p {
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    /* Иконки */
+    .neon-icon {
+        margin: 10px;
+    }
+
+    .neon-icon img {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Убираем hover эффекты на телефоне */
+    .neon-button:hover,
+    .neon-button-cont:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+   ========================= */
+
+@media (max-width: 400px) {
+
+    .neon-text {
+        font-size: 19px;
+        padding: 15px 5px;
+    }
+
+    .center-button {
+        width: 90%;
+        padding: 16px;
+        font-size: 15px;
+    }
+
+    #about-me,
+    .polotno,
+    .rozovoe-polotno {
+        width: calc(100% - 20px);
+        padding: 25px 15px;
+    }
+
+    .content-overlay {
+        padding: 5px;
+    }
+
+    .content-overlay h2 {
+        font-size: 21px;
+    }
+
+    .text-content p,
+    .content-overlay p {
+        font-size: 15px;
+    }
+
+    .image-photo img {
+        width: 140px;
+    }
+
+    .neon-icon img {
+        width: 38px;
+        height: 38px;
     }
 }
