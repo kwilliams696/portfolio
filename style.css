@@ -1,739 +1,3 @@
-@font-face {
-    font-family: 'FEARDynamic';
-    src: url('quantfh.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'terminator';
-    src: url('HURTM___.ttf') format('truetype');
-    font-weight: normal;
-   
-}
-@font-face {
-    font-family: 'cyber';
-    src: url('pdark.ttf') format('truetype');
-    font-weight: normal;
-   
-}
-
-.background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-.background-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Чтобы видео занимало всю доступную область */
-}
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: relative; /* Чтобы контент находился над видео */
-    z-index: 1; /* Помещаем контент над фоновым видео */
-}
-.neon-text  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: relative; /* Чтобы контент находился над видео */
-    z-index: 1;
-    font-size: 30px; /* Размер шрифта */
-    font-family: 'cyber', sans-serif;
-    color: #680840; /* Розовый цвет текста */
-    text-shadow: 0 0 10px #e99bc9, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1, 0 0 40px #ff6ac1, 0 0 70px #ff6ac1, 0 0 80px #ff6ac1, 0 0 100px #ff6ac1, 0 0 150px #ff6ac1; /* Тень текста с неоновым эффектом */
-}
-.scroll-arrow img {
-    width: 75px; /* Ширина стрелки */
-    height: 75px;
-    animation: bounce 2s infinite; /* Анимация для стрелки */
-    
-}
-
-@keyframes neon-glow {
-    to {
-        text-shadow: 0 0 5px #e52193, 0 0 15px #ff6ac1, 0 0 30px #ff6ac1, 0 0 50px #ff6ac1, 0 0 75px #ff6ac1, 0 0 100px #ff6ac1, 0 0 150px #ff6ac1, 0 0 200px #ff6ac1;
-    }
-}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-15px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
-    
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#next-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-}
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 28px; /* Расстояние между кнопками */
-    align-items: center; /* Если нужно, чтобы кнопки переходили на следующую строку при нехватке места */
-    justify-content: center;
-    margin-top: 20px;
-}
-.center-button {
-    padding: 30px 85px;
-    font-size: 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #680840; /* Цвет фона кнопки */
-    color: #dbc5d3; /* Цвет текста кнопки */
-    font-family: 'FEARDynamic', sans-serif;
-    text-shadow: 0 0 5px rgba(180, 74, 126, 0.3); /* Тень текста */
-    transition: background-color 0.3s, transform 0.3s,  box-shadow 0.3s; /* Переходы для плавных изменений */
-}
-.center-button:hover {
-    background-color: #4b8bfb; /* Цвет фона кнопки при наведении */
-    transform: scale(1.1); /* Увеличение кнопки при наведении */
-}
-.neon-button {
-    box-shadow: 0 0 5px #e99bc9, 0 0 10px #ff6ac1, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1, 0 0 60px #ff6ac1, 0 0 70px #ff6ac1, 0 0 90px #ff6ac1, 0 0 140px #ff6ac1; /* Тень текста с неоновым эффектом */
-    text-decoration: none;
-}
-#about-me {
-    height: 500px;
-    width: 700px; 
-    margin: 0 auto;
-    position: relative;
-    background-color: #000; /* Черное полотно */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding: 90px; 
-    box-shadow: 0 0 5px #03527a, 0 0 10px #8576f2, 0 0 10px #62aefa, 0 0 20px #3aaff3, 0 0 40px #43a3f6, 0 0 60px #49ccfb, 0 0 80px #1896f7, 0 0 130px #4abdf6; /* Тень текста с неоновым эффектом */
-    border-radius: 20px;/* Внутренний отступ вокруг содержимого */
-}
-.content-overlay {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    font-family: 'cyber', sans-serif;
-    font-size: 27px;
-    transform: translate(-50%, -50%);
-    color: #fff; /* Белый цвет текста */
-    z-index: 1; /* Поместить содержимое над черным полотном */
-    width: 80%; /* Ширина content-overlay */
-    padding: 20px;
-    display: flex;
-    flex-direction: column; /* Размещаем элементы в колонку */
-    align-items: center; /* Центрируем элементы по горизонтали */
-}
-.text-and-image {
-    display: flex;
-    justify-content: space-between; /* Размещаем текст и фото по разным сторонам */
-    align-items: center; /* Центрируем элементы по вертикали */
-    width: 100%; /* Ширина блока text-and-image */
-}
-.text-content {
-    display: flex;
-    text-align: left; 
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
-.left, .right {
-    flex: 1;
-    text-align: left;
-    margin-right: 10px;
-}
-.separator {
-    width: 5px; /* Ширина полоски */
-    height: auto; /* Высота полоски */
-    background: #efc0dc; /* Основной цвет полоски */
-    box-shadow: 0 0 2px #e99bc9, 0 0 5px #ff6ac1, 0 0 8px #ff6ac1, 0 0 20px #ff6ac1; /* Эффект неонового свечения */
-    margin: 0 40px; /* Отступы по бокам */
-    align-self: stretch;
-}
-.text-content p {
-    margin-bottom: 20px;
-    font-family: 'terminator', sans-serif;
-    font-size: 26px;
-    font-weight: 350;
-}
-.image-photo img {
-    width: 210px; /* Размер фотографии */
-    height: auto;
-    border-radius: 10%; /* Округленные углы фотографии */
-    margin-left: 60px;
-    margin-right: 10px; /* Отступ слева от фотографии */
-}
-.content-overlay h2,
-.content-overlay p {
-    margin-bottom: 20px;
-    text-shadow: 0 0 2px #e99bc9, 0 0 5px #ff6ac1, 0 0 8px #ff6ac1, 0 0 20px #ff6ac1; /* Ослабленная тень текста с неоновым эффектом */
-}
-.polotno{
-    height: 500px;
-    width: 700px; 
-    margin: 0 auto;
-    position: relative;
-    background-color: #000; /* Черное полотно */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding: 90px; 
-    box-shadow: 0 0 5px #03527a, 0 0 10px #8576f2, 0 0 10px #62aefa, 0 0 20px #3aaff3, 0 0 40px #43a3f6, 0 0 60px #49ccfb, 0 0 80px #1896f7, 0 0 130px #4abdf6; /* Тень текста с неоновым эффектом */
-    border-radius: 20px;
-}
-.contact-polotno{
-    background-color: #000;
-
-}
-.fade-in {
-    animation: fadeIn 1s ease-out forwards;
-}
-.contact-me-polotno{
-    height: 90px;
-    width: 0; 
-    margin: 0 auto;
-    position: relative;
-    background-color: #000; /* Черное полотно */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 5px #e99bc9, 0 0 10px #ff6ac1, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1, 0 0 60px #ff6ac1, 0 0 70px #ff6ac1, 0 0 90px #ff6ac1, 0 0 140px #ff6ac1; /* Тень текста с неоновым эффектом */
-    border-radius: 20px;
-
-}
-.rozovoe-polotno{
-    height: 500px;
-    width: 700px; 
-    margin: 0 auto;
-    position: relative;
-    background-color: #000; /* Черное полотно */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding: 90px; 
-    box-shadow: 0 0 5px #e99bc9, 0 0 10px #ff6ac1, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1, 0 0 60px #ff6ac1, 0 0 70px #ff6ac1, 0 0 90px #ff6ac1, 0 0 140px #ff6ac1; /* Тень текста с неоновым эффектом */
-    border-radius: 20px;
-}
-.neon-button-cont {
-    box-shadow: 0 0 5px #03527a, 0 0 10px #8576f2, 0 0 10px #62aefa, 0 0 20px #3aaff3, 0 0 40px #43a3f6, 0 0 60px #49ccfb, 0 0 80px #1896f7, 0 0 130px #4abdf6; /* Тень текста с неоновым эффектом */
-    text-decoration: none;
-}
-.neon-icon {
-    position: relative;
-    display: inline-block;
-    margin-right: 85px;
-    margin-left: 85px;
-}
-.neon-icon img {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    filter: drop-shadow(0 0 10px #05e9f9fa)
-            drop-shadow(0 0 20px #0263fffa)
-            drop-shadow(0 0 30px #05e9f9fa);
-}
-.neon-icon:focus img,
-.neon-icon:active img {
-    filter: drop-shadow(0 0 10px #05e9f9fa)
-            drop-shadow(0 0 20px  #0263fffa)
-            drop-shadow(0 0 30px #05e9f9fa);
-    outline: none; /* Removes default focus outline */
-}
-#me {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-    text-align: center; /* Center the text horizontally */
-}
-.contact-me-polotno p {
-    color: rgb(0, 0, 0);
-    font-size: 1.2em;
-    font-weight: bold; 
-    text-shadow: 0 0 5px #03527a, 0 0 10px #8576f2, 0 0 10px #62aefa, 
-                 0 0 20px #3aaff3, 0 0 40px #43a3f6, 0 0 60px #49ccfb, 
-                 0 0 80px #1896f7, 0 0 130px #4abdf6;
-}
-/* =========================================
-   MOBILE RESPONSIVE DESIGN
-   ========================================= */
-
-@media screen and (max-width: 768px) {
-
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        width: 100%;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        width: 100%;
-        margin: 0;
-        overflow-x: hidden;
-    }
-
-    /* BACKGROUND VIDEO */
-
-    .background-video {
-        position: fixed;
-        inset: 0;
-        width: 100%;
-        height: 100dvh;
-        overflow: hidden;
-    }
-
-    .background-video video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-
-    /* FIRST SCREEN */
-
-    #portfolio-section {
-        width: 100%;
-        min-height: 100dvh;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .neon-text {
-        min-height: 100dvh;
-        width: 100%;
-        padding: 20px;
-
-        font-size: clamp(16px, 5vw, 25px);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        text-align: center;
-    }
-
-    .neon-text h1 {
-        max-width: 100%;
-        margin: 0 0 15px 0;
-        font-size: clamp(25px, 8vw, 40px);
-        line-height: 1.2;
-        overflow-wrap: anywhere;
-    }
-
-    .neon-text p {
-        font-size: clamp(14px, 4.5vw, 20px);
-        margin: 10px 0 30px;
-    }
-
-
-    /* ARROW */
-
-    .scroll-arrow img {
-        width: 50px;
-        height: 50px;
-    }
-
-
-    /* MENU */
-
-    #next-section {
-        width: 100%;
-        min-height: 100dvh;
-        height: auto !important;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding: 40px 20px;
-    }
-
-    .button-container {
-        width: 100%;
-        gap: 18px;
-        margin: 0;
-    }
-
-    .center-button {
-        width: min(85%, 320px);
-
-        padding: 17px 15px;
-
-        font-size: 16px;
-
-        text-align: center;
-        display: block;
-    }
-
-    .center-button:hover {
-        transform: none;
-    }
-
-
-    /* SPACE BETWEEN SECTIONS */
-
-    .section-space {
-        height: 15vh;
-    }
-
-
-    /* ALL BIG PANELS */
-
-    #about-me,
-    .polotno,
-    .rozovoe-polotno {
-
-        width: calc(100% - 30px);
-
-        height: auto;
-        min-height: auto;
-
-        margin: 0 auto;
-
-        padding: 35px 20px;
-
-        border-radius: 15px;
-
-        position: relative;
-    }
-
-
-    /* CONTENT */
-
-    .content-overlay {
-
-        position: relative;
-
-        top: auto;
-        left: auto;
-
-        transform: none;
-
-        width: 100%;
-
-        padding: 0;
-
-        font-size: 16px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-
-    /* HEADINGS */
-
-    .content-overlay h2 {
-
-        width: 100%;
-
-        margin: 0 0 25px;
-
-        text-align: center;
-
-        font-size: clamp(22px, 7vw, 30px);
-
-        line-height: 1.2;
-    }
-
-
-    /* TEXT + IMAGE */
-
-    .text-and-image {
-
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 25px;
-    }
-
-
-    /* TEXT */
-
-    .text-content {
-
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-
-        margin: 0;
-
-        text-align: center;
-    }
-
-    .text-content p {
-
-        width: 100%;
-
-        margin: 0 0 18px;
-
-        font-family: 'terminator', sans-serif;
-
-        font-size: 15px;
-
-        line-height: 1.6;
-
-        text-align: center;
-
-        overflow-wrap: anywhere;
-    }
-
-
-    /* LEFT / RIGHT */
-
-    .left,
-    .right {
-
-        width: 100%;
-
-        flex: none;
-
-        margin: 0;
-
-        text-align: center;
-    }
-
-    .left p,
-    .right p {
-
-        text-align: center;
-
-        font-size: 15px;
-
-        line-height: 1.6;
-    }
-
-
-    /* SEPARATOR */
-
-    .separator {
-
-        width: 70%;
-
-        height: 3px;
-
-        margin: 15px auto;
-
-        align-self: center;
-    }
-
-
-    /* PHOTO */
-
-    .image-photo {
-
-        width: 100%;
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-    }
-
-    .image-photo img {
-
-        width: min(55vw, 180px);
-
-        height: auto;
-
-        margin: 0;
-
-        border-radius: 10%;
-    }
-
-
-    /* SKILLS */
-
-    #skills-s .text-content {
-
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-
-    #skills-s .left,
-    #skills-s .right {
-
-        width: 100%;
-    }
-
-
-    /* CONTACT */
-
-    #contact-me {
-
-        width: 100%;
-
-        padding: 20px 0;
-    }
-
-    .contact-me-polotno {
-
-        width: 85%;
-
-        height: auto;
-
-        min-height: 75px;
-
-        margin: 0 auto;
-
-        padding: 15px;
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-
-        gap: 10px;
-
-        border-radius: 15px;
-    }
-
-
-    /* SOCIAL ICONS */
-
-    .neon-icon {
-
-        margin: 5px 10px;
-
-        display: inline-flex;
-
-        justify-content: center;
-
-        align-items: center;
-    }
-
-    .neon-icon img {
-
-        width: 40px;
-
-        height: 40px;
-    }
-
-
-    /* CONTACT TEXT */
-
-    .contact-me-polotno p {
-
-        width: 100%;
-
-        margin: 0;
-
-        text-align: center;
-
-        font-size: 12px;
-
-        line-height: 1.5;
-
-        overflow-wrap: anywhere;
-    }
-
-
-    /* MOBILE NEON */
-
-   .neon-text,
-.center-button,
-.neon-button,
-.contact-me-polotno {
-    text-shadow:
-        0 0 2px #e99bc9,
-        0 0 5px #ff6ac1,
-     
-}
-    
-}
-
-
-/* =========================================
-   SMALL PHONES
-   ========================================= */
-
-@media screen and (max-width: 400px) {
-
-    .neon-text h1 {
-        font-size: 25px;
-    }
-
-    .neon-text p {
-        font-size: 14px;
-    }
-
-    .center-button {
-        width: 90%;
-        padding: 15px 10px;
-        font-size: 14px;
-    }
-
-    #about-me,
-    .polotno,
-    .rozovoe-polotno {
-        width: calc(100% - 20px);
-        padding: 30px 15px;
-    }
-
-    .content-overlay h2 {
-        font-size: 22px;
-    }
-
-    .text-content p,
-    .left p,
-    .right p {
         font-size: 14px;
     }
 
@@ -749,4 +13,112 @@
     .contact-me-polotno {
         width: 90%;
     }
+
+
+/* =========================================
+   REFINED SPACING + SUBTLE NEON OVERRIDES
+   Added to keep the original design while
+   reducing excessive glow and separating sections.
+   ========================================= */
+
+:root {
+    scroll-behavior: smooth;
 }
+
+/* More breathing room between main sections */
+#next-section {
+    padding-block: 10vh;
+}
+
+#about-me,
+.polotno,
+.rozovoe-polotno {
+    margin-block: 12vh;
+}
+
+/* Keep the contact section visually separate */
+#contact-me {
+    margin-top: 12vh;
+    padding-block: 4vh;
+}
+
+.section-space {
+    height: 12vh;
+}
+
+/* Neon should be an accent, not a large halo */
+.neon-text {
+    text-shadow: 0 0 2px rgba(233, 155, 201, 0.35);
+}
+
+.content-overlay h2,
+.content-overlay p,
+.contact-me-polotno p {
+    text-shadow: 0 0 2px rgba(255, 106, 193, 0.2);
+}
+
+.center-button,
+.neon-button,
+.neon-button-cont,
+.contact-me-polotno {
+    box-shadow: 0 0 4px rgba(233, 155, 201, 0.22);
+}
+
+#about-me,
+.polotno,
+.rozovoe-polotno {
+    box-shadow: 0 0 7px rgba(74, 189, 246, 0.18);
+}
+
+.separator {
+    box-shadow: 0 0 3px rgba(255, 106, 193, 0.25);
+}
+
+.neon-icon img {
+    filter: drop-shadow(0 0 3px rgba(5, 233, 249, 0.25));
+}
+
+.neon-icon:focus img,
+.neon-icon:active img {
+    filter: drop-shadow(0 0 3px rgba(5, 233, 249, 0.25));
+}
+
+/* Prevent hover from bringing back an oversized glow */
+.center-button:hover {
+    box-shadow: 0 0 5px rgba(74, 189, 246, 0.25);
+}
+
+/* Responsive spacing */
+@media screen and (max-width: 768px) {
+    #next-section {
+        padding-block: 8vh;
+    }
+
+    #about-me,
+    .polotno,
+    .rozovoe-polotno {
+        margin-block: 8vh;
+    }
+
+    #contact-me {
+        margin-top: 8vh;
+        padding-block: 20px;
+    }
+
+    .section-space {
+        height: 8vh;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #about-me,
+    .polotno,
+    .rozovoe-polotno {
+        margin-block: 6vh;
+    }
+
+    .section-space {
+        height: 6vh;
+    }
+}
+
