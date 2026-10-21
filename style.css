@@ -70,7 +70,7 @@
 
 @keyframes neon-glow {
     to {
-        text-shadow: 0 0 5px #e52193, 0 0 15px #ff6ac1, 0 0 30px #ff6ac1, 0 0 50px #ff6ac1, 0 0 75px #ff6ac1, 0 0 100px #ff6ac1, 0 0 150px #ff6ac1, 0 0 200px #ff6ac1;
+        text-shadow: 0 0 5px #e52193, 0 0 15px #ff6ac1, 0 0 30px #ff6ac1;
     }
 }
 @keyframes bounce {
