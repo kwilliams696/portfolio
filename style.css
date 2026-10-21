@@ -129,7 +129,7 @@
     transform: scale(1.1); /* Увеличение кнопки при наведении */
 }
 .neon-button {
-    box-shadow: 0 0 5px #e99bc9, 0 0 10px #ff6ac1, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1, 0 0 60px #ff6ac1, 0 0 70px #ff6ac1, 0 0 90px #ff6ac1, 0 0 140px #ff6ac1; /* Тень текста с неоновым эффектом */
+    box-shadow: 0 0 5px #e99bc9, 0 0 10px #ff6ac1, 0 0 20px #ff6ac1, 0 0 30px #ff6ac1; /* Тень текста с неоновым эффектом */
     text-decoration: none;
 }
 #about-me {
